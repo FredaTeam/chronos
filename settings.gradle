@@ -15,3 +15,8 @@ pluginManagement {
 }
 
 rootProject.name = 'chronos'
+include 'chronos-framework'
+include 'chronos-core'
+include 'chronos-admin'
+include 'chronos-server'
+

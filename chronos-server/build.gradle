@@ -1,0 +1,11 @@
+archivesBaseName = 'chronos-server'
+
+jar.enabled = true
+
+bootJar.enabled = true
+
+
+dependencies {
+
+    implementation project(':chronos-core')
+}

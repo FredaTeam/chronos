@@ -1,13 +1,13 @@
-package org.freda.chronos;
+package org.freda.chronos.server;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class TestApplication {
+public class ServerApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(TestApplication.class, args);
+		SpringApplication.run(ServerApplication.class, args);
 	}
 
 }

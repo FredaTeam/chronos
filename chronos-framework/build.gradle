@@ -1,0 +1,7 @@
+archivesBaseName = 'chronos-framework'
+
+jar.enabled = true
+
+bootJar.enabled = false
+
+bootRun.enabled = false
