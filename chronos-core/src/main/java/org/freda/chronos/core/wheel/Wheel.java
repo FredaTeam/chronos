@@ -1,7 +1,8 @@
 package org.freda.chronos.core.wheel;
 
-import org.freda.chronos.core.listener.Listener;
 import org.freda.chronos.core.Task;
+import org.freda.chronos.core.listener.Listener;
+import org.springframework.util.CollectionUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,6 +27,16 @@ public abstract class Wheel implements Rotatable {
      * 观察者监听
      */
     private final List<Listener> listeners = new ArrayList<>();
+
+    public Wheel() {
+    }
+
+    public Wheel(int index, Wheel nextWheel) {
+
+        this.index = index;
+
+        this.nextWheel = nextWheel;
+    }
 
     /**
      * 传动
@@ -55,8 +66,6 @@ public abstract class Wheel implements Rotatable {
      */
     private void notifyListener() {
 
-
-
         this.listeners.forEach(t -> t.fire(this.index, this.getTasks()));
     }
 
@@ -80,6 +89,14 @@ public abstract class Wheel implements Rotatable {
 
     public int getIndex() {
         return index;
+    }
+
+    public void setIndex(int index) {
+        this.index = index;
+    }
+
+    public void setTasks(List<Task>[] tasks) {
+        this.tasks = tasks;
     }
 
     public Wheel getNextWheel() {
@@ -108,6 +125,10 @@ public abstract class Wheel implements Rotatable {
             throw new IllegalArgumentException("index out of bounds.");
         }
 
+        if (CollectionUtils.isEmpty(tasks[index])) {
+
+            tasks[index] = new ArrayList<>();
+        }
         tasks[index].add(task);
     }
 
