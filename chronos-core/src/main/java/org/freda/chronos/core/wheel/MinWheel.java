@@ -10,8 +10,7 @@ public class MinWheel extends Wheel {
 
     private static final int MIN_TEETH_COUNT = 60;
 
-    public MinWheel(int index, Wheel nextWheel) {
-        super(index, nextWheel);
+    public MinWheel() {
 
         super.tasks = new ArrayList[MIN_TEETH_COUNT];
 

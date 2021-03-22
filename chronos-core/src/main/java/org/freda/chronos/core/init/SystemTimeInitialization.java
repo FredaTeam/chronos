@@ -1,11 +1,11 @@
 package org.freda.chronos.core.init;
 
-import org.freda.chronos.core.wheel.HourWheel;
-import org.freda.chronos.core.wheel.MinWheel;
 import org.freda.chronos.core.wheel.SecWheel;
-import org.freda.chronos.core.wheel.Wheel;
 
 import java.util.Calendar;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 
 /**
  * 系统初始化
@@ -17,35 +17,15 @@ import java.util.Calendar;
  */
 public class SystemTimeInitialization implements Initialization {
 
-    private boolean isRun = true;
+    private static final ScheduledExecutorService POOL = Executors.newScheduledThreadPool(1);
 
     @Override
-    public void init() {
+    public void init() throws Exception {
 
-        Calendar calendar = Calendar.getInstance();
-        //1. 初始化轮及时间
-        Wheel sec = new SecWheel(calendar.get(Calendar.SECOND),
-                        new MinWheel(calendar.get(Calendar.MINUTE),
-                            new HourWheel(calendar.get(Calendar.HOUR), null)));
+        WheelFactory.buildAllWheels(Calendar.getInstance());
 
-        //2. 增加特殊监听
+        POOL.scheduleAtFixedRate(() -> WheelFactory.getWheelInstance(SecWheel.class).next(),
 
-       //3. run
-        new Thread(() -> {
-
-            while (isRun) {
-
-                try {
-
-                    sec.next();
-
-                    Thread.sleep(1000);
-
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-
-        }).start();
+                0, 1000, TimeUnit.MILLISECONDS);
     }
 }

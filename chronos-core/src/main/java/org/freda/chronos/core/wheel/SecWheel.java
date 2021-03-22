@@ -10,9 +10,7 @@ public class SecWheel extends Wheel {
     private static final int SEC_TEETH_COUNT = 60;
 
 
-    public SecWheel(int index, Wheel nextWheel) {
-
-        super(index, nextWheel);
+    public SecWheel() {
 
         super.tasks = new ArrayList[SEC_TEETH_COUNT];
 

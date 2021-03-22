@@ -30,14 +30,6 @@ public abstract class Wheel implements Rotatable {
 
     public Wheel() {
     }
-
-    public Wheel(int index, Wheel nextWheel) {
-
-        this.index = index;
-
-        this.nextWheel = nextWheel;
-    }
-
     /**
      * 传动
      *

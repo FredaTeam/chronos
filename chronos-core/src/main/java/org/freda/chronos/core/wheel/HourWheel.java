@@ -8,9 +8,7 @@ public class HourWheel extends Wheel {
 
     private static final int HOUR_TEETH_COUNT = 60;
 
-    public HourWheel(int index, Wheel nextWheel) {
-
-        super(index, nextWheel);
+    public HourWheel() {
 
         super.tasks = new ArrayList[HOUR_TEETH_COUNT];
 
