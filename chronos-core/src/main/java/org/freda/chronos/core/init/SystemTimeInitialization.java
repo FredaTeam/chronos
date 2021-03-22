@@ -1,6 +1,5 @@
 package org.freda.chronos.core.init;
 
-import org.freda.chronos.core.wheel.SecWheel;
 import org.freda.chronos.core.wheel.WheelEnum;
 
 import java.util.Calendar;

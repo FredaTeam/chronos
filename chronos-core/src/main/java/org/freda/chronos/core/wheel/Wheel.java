@@ -58,7 +58,7 @@ public abstract class Wheel implements Rotatable {
      */
     private void notifyListener() {
 
-        this.listeners.forEach(t -> t.fire(this.index, this.getTasks()));
+        this.listeners.parallelStream().forEach(t -> t.fire(this.index, this.getTasks()));
     }
 
     /**
