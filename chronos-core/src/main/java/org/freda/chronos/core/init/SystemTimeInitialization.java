@@ -1,6 +1,7 @@
 package org.freda.chronos.core.init;
 
 import org.freda.chronos.core.wheel.SecWheel;
+import org.freda.chronos.core.wheel.WheelEnum;
 
 import java.util.Calendar;
 import java.util.concurrent.Executors;
@@ -24,7 +25,7 @@ public class SystemTimeInitialization implements Initialization {
 
         WheelFactory.buildAllWheels(Calendar.getInstance());
 
-        POOL.scheduleAtFixedRate(() -> WheelFactory.getWheelInstance(SecWheel.class).next(),
+        POOL.scheduleAtFixedRate(() -> WheelEnum.getMain().next(),
 
                 0, 1000, TimeUnit.MILLISECONDS);
     }
