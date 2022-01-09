@@ -1,7 +1,6 @@
 package org.freda.chronos.core.wheel;
 
 import org.freda.chronos.core.listener.TaskExeListener;
-import org.freda.chronos.core.listener.TaskInitListener;
 
 import java.util.ArrayList;
 
@@ -14,6 +13,6 @@ public class MinWheel extends Wheel {
 
         super.tasks = new ArrayList[MIN_TEETH_COUNT];
 
-        super.registerListener(new TaskInitListener());
+        super.registerListener(new TaskExeListener());
     }
 }

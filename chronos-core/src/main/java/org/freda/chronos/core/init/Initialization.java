@@ -1,6 +1,8 @@
 package org.freda.chronos.core.init;
 
 public interface Initialization {
-
-    void init() throws Exception;
+    /**
+     * 初始化
+     */
+    void init();
 }

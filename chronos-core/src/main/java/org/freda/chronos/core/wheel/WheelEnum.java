@@ -5,11 +5,17 @@ import org.freda.chronos.core.init.WheelFactory;
 import java.util.Arrays;
 
 public enum WheelEnum {
-
+    /**
+     * 秒轮
+     */
     SEC(SecWheel.class, MinWheel.class, true),
-
+    /**
+     * 分钟轮
+     */
     MIN(MinWheel.class, HourWheel.class, false),
-
+    /**
+     * 小时轮
+     */
     HOUR(HourWheel.class, null, false);
 
     private Class<? extends Wheel> clazz;

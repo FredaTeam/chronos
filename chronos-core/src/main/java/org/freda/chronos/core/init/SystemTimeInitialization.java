@@ -15,14 +15,28 @@ import java.util.concurrent.TimeUnit;
  * 3. 监听初始化
  * 4. run
  */
-public class SystemTimeInitialization implements Initialization {
+public class SystemTimeInitialization implements Initialization, Runnable {
 
     private static final ScheduledExecutorService POOL = Executors.newScheduledThreadPool(1);
 
+    private boolean isNeedInit = true;
+
     @Override
-    public void init() throws Exception {
+    public void init(){
 
         WheelFactory.buildAllWheels(Calendar.getInstance());
+
+        isNeedInit = false;
+
+    }
+
+    @Override
+    public void run() {
+
+        if (isNeedInit) {
+
+            init();
+        }
 
         POOL.scheduleAtFixedRate(() -> WheelEnum.getMain().next(),
 

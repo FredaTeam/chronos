@@ -9,14 +9,11 @@ import org.freda.chronos.core.wheel.WheelEnum;
 import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Map;
-import java.util.Optional;
 import java.util.concurrent.ConcurrentHashMap;
 
 public class WheelFactory {
 
     private static final Map<Class<?>, Wheel> WHEEL_MAP = new ConcurrentHashMap<>();
-
-    private static boolean allWheelHasBuild = false;
 
     /**
      * 获取轮的实例
@@ -69,7 +66,5 @@ public class WheelFactory {
                 v.setIndex(calendar.get(Calendar.HOUR));
             }
         });
-
-        allWheelHasBuild = true;
     }
 }
